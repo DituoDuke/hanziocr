@@ -9,6 +9,4 @@ def ocr():
     resultString = ' '.join(resultArray)
     with open(ocr_path, 'w') as file:
         file.write(resultString)
-
-
-    
+    return resultString

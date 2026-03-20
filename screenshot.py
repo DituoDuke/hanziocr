@@ -16,6 +16,6 @@ def capture_region(left, top,right,down):
         os.makedirs(capture_path)
     bbox = (top,left,right,down)
     screenshot = ImageGrab.grab(bbox)
-    screenshot.save(fcapture_path, "PNG")
+    screenshot.save(capture_path, "PNG")
     print(f"Região capturada")
     return screenshot
