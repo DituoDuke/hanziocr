@@ -23,8 +23,10 @@ filelock==3.25.2
 flatbuffers==25.12.19
 fonttools==4.62.1
 fsspec==2026.2.0
+hanzipy==1.0.4
 idna==3.11
 ImageIO==2.37.3
+jieba==0.42.1
 Jinja2==3.1.6
 joblib==1.5.3
 kiwisolver==1.5.0

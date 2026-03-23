@@ -2,17 +2,26 @@ from pypinyin import pinyin, lazy_pinyin, Style
 import pypinyin
 import jieba
 
-ocr_path = "./results/ocr_result.txt"
 
-with open(ocr_path,'r') as file:
-    text = file.read()
+def pinyinGenerateFromFile():
+    ocr_path = "./results/ocr_result.txt"
 
-segmentedHanzi = list(jieba.cut(text))
+    with open(ocr_path,'r') as file:
+        text = file.read()
+    segmentedHanzi = list(jieba.cut(text))
+    hanziAndPinyin = []
 
-pinyinText = []
-print(list(segmentedHanzi))
-for segments in range(len(segmentedHanzi)):
-    pinyinText.append(pinyin(segmentedHanzi[segments]))
+    pinyinText = []
+    for i, segments in enumerate(segmentedHanzi):
+        pinyinText.append(pinyin(segments))
+    pinyinTextMapped = [[p[0] for p in pin] for pin in pinyinText]
 
-
-print(pinyin(pinyinText[0]))
+    for i, seg in enumerate(segmentedHanzi):
+        hanziAndPinyin.append(f"{seg}({''.join(pinyinTextMapped[i])}) ")
+    # print(pinyinTextMapped)
+    return {
+        "text": text,
+        "hanziSegmented": " ".join(segmentedHanzi),
+        "pinyin": " ".join(["".join(seg) for seg in pinyinTextMapped]),
+        "hanziPinyin": " ".join(hanziAndPinyin)
+    }

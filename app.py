@@ -1,6 +1,7 @@
 from screenshot import capture_full_screen
 from ocr import ocr
-from pinyin import get_definition
+# from pinyin import get_definition
+from pinyin import pinyinGenerateFromFile
 # top = int(input("cima: "))
 # left = int(input("esquerda: " ))
 # right = int(input("direita: " ))
@@ -8,5 +9,4 @@ from pinyin import get_definition
 
 
 # capture_full_screen()
-resultArray = ocr()
-print(resultArray)
+print(pinyinGenerateFromFile()["hanziPinyin"])
