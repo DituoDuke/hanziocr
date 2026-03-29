@@ -1,6 +1,8 @@
+import os
+os.environ["TRANSFORMERS_OFFLINE"] = "1"
+
 from transformers import MarianMTModel, MarianTokenizer
 
-# chinês → inglês
 def translate(text, src, tgt):
     model_name = f"Helsinki-NLP/opus-mt-{src}-{tgt}"
     tokenizer = MarianTokenizer.from_pretrained(model_name)
@@ -10,6 +12,6 @@ def translate(text, src, tgt):
     return tokenizer.decode(translated[0], skip_special_tokens=True)
 
 # zh → en → pt
-en = translate("第五条", "zh", "en")
-
-print(en)
+en = translate("很高兴认识你（我爱你）", "zh", "en")
+pt = translate(en, "en", "pt")
+print(pt)
