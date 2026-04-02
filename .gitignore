@@ -1,3 +1,5 @@
 __pycache__
 results/
 venv/
+models/
+venv-3.12/

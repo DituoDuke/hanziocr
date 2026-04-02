@@ -1,17 +1,13 @@
-import os
-os.environ["TRANSFORMERS_OFFLINE"] = "1"
-
 from transformers import MarianMTModel, MarianTokenizer
 
-def translate(text, src, tgt):
-    model_name = f"Helsinki-NLP/opus-mt-{src}-{tgt}"
-    tokenizer = MarianTokenizer.from_pretrained(model_name)
-    model = MarianMTModel.from_pretrained(model_name)
-    tokens = tokenizer([text], return_tensors="pt", padding=True)
-    translated = model.generate(**tokens)
-    return tokenizer.decode(translated[0], skip_special_tokens=True)
+model_name = "Helsinki-NLP/opus-mt-zh-en"
+tokenizer = MarianTokenizer.from_pretrained(model_name)
+model = MarianMTModel.from_pretrained(model_name)
 
-# zh → en → pt
-en = translate("很高兴认识你（我爱你）", "zh", "en")
-pt = translate(en, "en", "pt")
-print(pt)
+
+inputs = tokenizer("我爱我的家人", return_tensors="pt", padding=True, truncation=True)
+translated = model.generate(**inputs)
+
+translated_texts = tokenizer.batch_decode(translated, skip_special_tokens=True)
+
+print(translated_texts[0])
