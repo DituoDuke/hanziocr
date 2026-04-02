@@ -3,14 +3,16 @@ from ocr import ocr
 # from pinyin import get_definition
 from pinyin import pinyinGenerateFromFile
 from translate import translate
+from cv import initiateFullImage
 # top = int(input("cima: "))
 # left = int(input("esquerda: " ))
 # right = int(input("direita: " ))
 # down = int(input("baixo: "))
 
 
-
-# ocr()
+capture_full_screen()
+initiateFullImage()
+ocr()
 frases = pinyinGenerateFromFile()
 print(frases["hanziPinyin"])
 print(translate(frases["text"]))

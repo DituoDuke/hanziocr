@@ -21,6 +21,9 @@ def translate(texto):
     translated = model.generate(**inputs)
 
     translated_texts = tokenizer.batch_decode(translated, skip_special_tokens=True)
+    with open("./results/pinyin_results.txt", 'a') as file:
+        file.write(f"\nTradução: {translated_texts[0]}")
+
 
     # print(translated_texts[0])
     return translated_texts[0]
