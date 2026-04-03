@@ -12,10 +12,15 @@ capturePath = os.path.join(BASE_DIR, "results", "screenshot_full.png")
 def initiateFullImage():
     # read image
     img = cv2.imread(capturePath)
+    cv2.namedWindow("image", cv2.WINDOW_NORMAL)
     # show image
     # cv2.namedWindow("test", cv2.WND_PROP_FULLSCREEN)
     cv2.imshow('image', img)
-    cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, 1)
+    cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    try:
+        cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    except:
+        cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, 1)
 
     #define the events for the
     # mouse_click.

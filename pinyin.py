@@ -12,7 +12,7 @@ ocr_path = os.path.join(BASE_DIR, "results", "ocr_result.txt")
 
 def pinyinGenerateFromFile():
 
-    with open(ocr_path,'r') as file:
+    with open(ocr_path,'r', encoding="utf-8") as file:
         text = file.read()
     segmentedHanzi = list(jieba.cut(text))
     hanziAndPinyin = []
@@ -25,7 +25,7 @@ def pinyinGenerateFromFile():
     for i, seg in enumerate(segmentedHanzi):
         hanziAndPinyin.append(f"{seg}({''.join(pinyinTextMapped[i])}) ")
     # print(pinyinTextMapped)
-    with open(os.path.join(BASE_DIR, "results", "pinyin_results.txt"), 'w') as file:
+    with open(os.path.join(BASE_DIR, "results", "pinyin_results.txt"), 'w', encoding="utf-8") as file:
         file.write(f"text: {text},\nhanziSegmented: {' '.join(segmentedHanzi)},\npinyin: {' '.join([''.join(seg) for seg in pinyinTextMapped])},\nhanziPinyin: {' '.join(hanziAndPinyin)}")
     return {
         "text": text,

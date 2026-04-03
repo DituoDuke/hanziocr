@@ -14,6 +14,6 @@ def ocr():
     reader = easyocr.Reader(['ch_sim', 'en'])
     resultArray = reader.readtext(capture_path, detail=0)
     resultString = ' '.join(resultArray)
-    with open(ocr_path, 'w') as file:
+    with open(ocr_path, 'w', encoding="utf-8") as file:
         file.write(resultString)
     return resultString
