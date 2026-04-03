@@ -2,8 +2,11 @@ import cv2
 import numpy as np
 from screenshot import capture_region
 import os
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+import sys
+if getattr(sys, 'frozen', False):
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 capturePath = os.path.join(BASE_DIR, "results", "screenshot_full.png")
 
 def initiateFullImage():

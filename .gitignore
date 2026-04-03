@@ -4,3 +4,5 @@ venv/
 models/
 venv-3.12/
 *.egg-info/
+dist/
+build/

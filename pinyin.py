@@ -2,8 +2,12 @@ from pypinyin import pinyin, lazy_pinyin, Style
 import pypinyin
 import jieba
 import os
+import sys
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if getattr(sys, 'frozen', False):
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ocr_path = os.path.join(BASE_DIR, "results", "ocr_result.txt")
 
 def pinyinGenerateFromFile():
