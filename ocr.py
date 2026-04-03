@@ -1,7 +1,9 @@
 import easyocr
+import os
 
-ocr_path = "./results/ocr_result.txt"
-capture_path = "./results/screenshot.png"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ocr_path = os.path.join(BASE_DIR, "results", "ocr_result.txt")
+capture_path = os.path.join(BASE_DIR, "results", "screenshot.png")
 
 def ocr():
     reader = easyocr.Reader(['ch_sim', 'en'])

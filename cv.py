@@ -1,8 +1,10 @@
 import cv2
 import numpy as np
 from screenshot import capture_region
+import os
 
-capturePath = "./results/screenshot_full.png"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+capturePath = os.path.join(BASE_DIR, "results", "screenshot_full.png")
 
 def initiateFullImage():
     # read image
@@ -40,34 +42,7 @@ def initiateFullImage():
                 cv2.imshow('image', display)
             except:
                 print("waiting for second vector")
-        #     # font for left click event
-        #     font = cv2.FONT_HERSHEY_TRIPLEX
-        #     LB = 'Left Button'
-            
-        #     # display that left button 
-        #     # was clicked.
-        #     cv2.putText(img, LB, (x, y), 
-        #                 font, 1, 
-        #                 (255, 255, 0), 
-        #                 2) 
-        #     cv2.imshow('image', img)
-            
-            
-        # # to check if right mouse 
-        # # button was clicked
-        # if event == cv2.EVENT_RBUTTONDOWN:
-            
-        #     # font for right click event
-        #     font = cv2.FONT_HERSHEY_SCRIPT_SIMPLEX
-        #     RB = 'Right Button'
-            
-        #     # display that right button 
-        #     # was clicked.
-        #     cv2.putText(img, RB, (x, y),
-        #                 font, 1, 
-        #                 (0, 255, 255),
-        #                 2)
-        #     cv2.imshow('image', img)
+       
 
     cv2.setMouseCallback('image', mouse_click)
     cv2.waitKey(0)

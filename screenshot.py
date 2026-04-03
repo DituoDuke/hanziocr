@@ -2,13 +2,15 @@ from PIL import ImageGrab
 import datetime
 import os
 
-capture_path = "./results/screenshot.png"
-full_capture_path = "./results/screenshot_full.png"
-results_path = "./results"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+capture_path = os.path.join(BASE_DIR, "results", "screenshot.png")
+full_capture_path = os.path.join(BASE_DIR, "results", "screenshot_full.png")
+results_path = os.path.join(BASE_DIR, "results")
 def capture_full_screen():
     if not os.path.exists(results_path):
         os.makedirs(results_path)
-    screenshot = ImageGrab.grab()
+    bbox = (0,0,1920,1080)
+    screenshot = ImageGrab.grab(bbox)
 
     screenshot.save(full_capture_path, "PNG")
     print(f"Screenshot saved in {full_capture_path}")

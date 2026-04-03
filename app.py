@@ -9,10 +9,16 @@ from cv import initiateFullImage
 # right = int(input("direita: " ))
 # down = int(input("baixo: "))
 
+import multiprocessing
+multiprocessing.freeze_support()
 
-capture_full_screen()
-initiateFullImage()
-ocr()
-frases = pinyinGenerateFromFile()
-print(frases["hanziPinyin"])
-print(translate(frases["text"]))
+def main():
+    capture_full_screen()
+    initiateFullImage()
+    ocr()
+    frases = pinyinGenerateFromFile()
+    print(frases["hanziPinyin"])
+    print(translate(frases["text"]))
+
+if __name__ == '__main__':
+    main()

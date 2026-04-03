@@ -3,3 +3,4 @@ results/
 venv/
 models/
 venv-3.12/
+*.egg-info/

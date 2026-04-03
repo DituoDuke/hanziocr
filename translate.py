@@ -2,9 +2,11 @@ from transformers import MarianMTModel, MarianTokenizer
 import os
 from pathlib import Path
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+capture_path = os.path.join(BASE_DIR, "results", "screenshot.png")
 
 def translate(texto):
-    model_path = "./models/zh-en"
+    model_path = os.path.join(BASE_DIR, "models", "zh-en")
 
     if not Path(model_path).exists():        
         model_name = 'Helsinki-NLP/opus-mt-zh-en'
@@ -21,7 +23,7 @@ def translate(texto):
     translated = model.generate(**inputs)
 
     translated_texts = tokenizer.batch_decode(translated, skip_special_tokens=True)
-    with open("./results/pinyin_results.txt", 'a') as file:
+    with open(os.path.join(BASE_DIR, "results", "pinyin_results.txt"), 'a') as file:
         file.write(f"\nTradução: {translated_texts[0]}")
 
 
@@ -29,7 +31,7 @@ def translate(texto):
     return translated_texts[0]
 
 def translateChooseModel(texto, lang):
-    model_path = "./models/"+lang
+    model_path = os.path.join(BASE_DIR, "models", lang)
 
     if not Path(model_path).exists():        
         model_name = 'Helsinki-NLP/opus-mt-'+lang
