@@ -21,7 +21,7 @@ multiprocessing.freeze_support()
 
 async def notificar(frase,traducao):
     await notifier.send(title="Hanzi", message=f"text: {frase["text"]}\nhanziPinyin: {''.join(frase["hanziPinyin"])}\nTradução: {traducao}")
-    await asyncio.sleep(180)
+    await asyncio.sleep(300)
 
 def main():
     capture_full_screen()
