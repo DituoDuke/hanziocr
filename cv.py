@@ -16,7 +16,7 @@ def initiateFullImage():
     # show image
     # cv2.namedWindow("test", cv2.WND_PROP_FULLSCREEN)
     cv2.imshow('image', img)
-    cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    # cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     try:
         cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     except:

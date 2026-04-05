@@ -24,9 +24,9 @@ def pinyinGenerateFromFile():
 
     for i, seg in enumerate(segmentedHanzi):
         hanziAndPinyin.append(f"{seg}({''.join(pinyinTextMapped[i])}) ")
-    # print(pinyinTextMapped)
-    with open(os.path.join(BASE_DIR, "results", "pinyin_results.txt"), 'w', encoding="utf-8") as file:
-        file.write(f"text: {text},\nhanziSegmented: {' '.join(segmentedHanzi)},\npinyin: {' '.join([''.join(seg) for seg in pinyinTextMapped])},\nhanziPinyin: {' '.join(hanziAndPinyin)}")
+    print(pinyinTextMapped)
+    # with open(os.path.join(BASE_DIR, "results", "pinyin_results.txt"), 'w', encoding="utf-8") as file:
+    #     file.write(f"text: {text},\nhanziSegmented: {' '.join(segmentedHanzi)},\npinyin: {' '.join([''.join(seg) for seg in pinyinTextMapped])},\nhanziPinyin: {' '.join(hanziAndPinyin)}")
     return {
         "text": text,
         "hanziSegmented": " ".join(segmentedHanzi),

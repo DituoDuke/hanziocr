@@ -10,3 +10,4 @@ pypinyin
 transformers
 torch
 torchvision
+sentencepiece
