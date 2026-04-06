@@ -2,6 +2,10 @@ from PIL import ImageGrab
 import datetime
 import os
 import sys
+import screeninfo
+from screeninfo import get_monitors
+monitor = get_monitors()[0]
+
 if getattr(sys, 'frozen', False):
     BASE_DIR = os.path.dirname(sys.executable)
 else:
@@ -12,7 +16,7 @@ results_path = os.path.join(BASE_DIR, "results")
 def capture_full_screen():
     if not os.path.exists(results_path):
         os.makedirs(results_path)
-    bbox = (0,0,1920,1080)
+    bbox = (0,0,monitor.width,monitor.height)
     screenshot = ImageGrab.grab(bbox)
 
     screenshot.save(full_capture_path, "PNG")

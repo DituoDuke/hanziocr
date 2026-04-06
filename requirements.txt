@@ -10,3 +10,4 @@ Pillow
 pypinyin
 transformers
 sentencepiece
+screeninfo

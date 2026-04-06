@@ -20,7 +20,7 @@ else:
 multiprocessing.freeze_support()
 
 async def notificar(frase,traducao):
-    await notifier.send(title="Hanzi", message=f"text: {frase["text"]}\nhanziPinyin: {''.join(frase["hanziPinyin"])}\nTradução: {traducao}")
+    await notifier.send(title="Hanzi", message=f"text: {frase["text"]}\nhanziPinyin: {''.join(frase["hanziPinyin"])}\nTradução: {traducao}", on_dismissed=lambda: sys.exit(0))
     await asyncio.sleep(300)
 
 def main():
