@@ -30,7 +30,6 @@ async def notificar(frase, traducao):
         on_clicked=lambda: encerrar.set()
     )
 
-    # espera até dispensar ou 5 min
     await asyncio.wait_for(encerrar.wait(), timeout=30)
     sys.exit(0)
 
