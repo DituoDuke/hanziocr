@@ -11,7 +11,7 @@ from desktop_notifier import DesktopNotifier
 
 import multiprocessing
 
-notifier = DesktopNotifier()
+notifier = DesktopNotifier(app_name="HanziOcr")
 
 if getattr(sys, 'frozen', False):
     BASE_DIR = os.path.dirname(sys.executable)
@@ -19,9 +19,20 @@ else:
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 multiprocessing.freeze_support()
 
-async def notificar(frase,traducao):
-    await notifier.send(title="Hanzi", message=f"text: {frase["text"]}\nhanziPinyin: {''.join(frase["hanziPinyin"])}\nTradução: {traducao}", on_dismissed=lambda: sys.exit(0))
-    await asyncio.sleep(300)
+
+async def notificar(frase, traducao):
+    encerrar = asyncio.Event()
+
+    await notifier.send(
+        title="Hanzi",
+        message=f"text: {frase['text']}\nhanziPinyin: {''.join(frase['hanziPinyin'])}\nTradução: {traducao}",
+        on_dismissed=lambda: encerrar.set(),
+        on_clicked=lambda: encerrar.set()
+    )
+
+    # espera até dispensar ou 5 min
+    await asyncio.wait_for(encerrar.wait(), timeout=30)
+    sys.exit(0)
 
 def main():
     capture_full_screen()
