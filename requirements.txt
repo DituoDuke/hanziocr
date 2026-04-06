@@ -1,5 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cpu
 
+desktop_notifier
 easyocr
 jieba
 numpy
@@ -8,6 +9,4 @@ opencv_python_headless
 Pillow
 pypinyin
 transformers
-torch
-torchvision
 sentencepiece
